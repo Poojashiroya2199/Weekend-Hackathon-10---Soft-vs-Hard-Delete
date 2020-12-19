@@ -11,7 +11,7 @@ app.use(express.json());
 // Get all the students
 app.get("/students", async (req, res) => {
   // write your codes here
-  res.send(Student);
+  res.send(JSON.stringify(Student));
 });
 
 // Add student to database
@@ -27,7 +27,7 @@ app.post("/students", async (req, res) => {
     return;
   }
   let obj = { name, age, Class, sex, grade_point };
-  Student.push(obj);
+  Student.push(JSON.stringify(obj);
 });
 
 // Get specific student
@@ -39,7 +39,7 @@ app.get("/students/:id", async (req, res) => {
     res.status(404).send("Error");
     return;
   }
-  res.send(student);
+  res.send(JSON.stringify(student));
 });
 
 // delete specific student
@@ -53,7 +53,7 @@ app.delete("/students/:id", async (req, res) => {
   }
   let copy = { ...Student };
   copy.remove(student);
-  res.send(copy);
+  res.send(JSON.stringify(copy));
 });
 
 module.exports = app;
